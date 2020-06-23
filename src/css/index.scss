@@ -1,0 +1,117 @@
+@import "~bootstrap/scss/bootstrap";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    overflow: hidden;
+
+}
+
+body {
+    height: 100vh;
+}
+
+.containall {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../images/pale_red_white_shadow-644060.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#signupform {
+    display: none;
+}
+
+.signupcontainer {
+    border-radius: 10px;
+    background-color: rgba(37, 10, 10, 0.904);
+    display: flex;
+    margin: 1rem;
+    width: 650px;
+    min-height: 26.3rem;
+
+    .signupimg {
+        width: 50%;
+        background-image: url('../images/walletcropped.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .logo {
+            background-color: rgba(37, 10, 10, 0.76);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            img {
+                width: 150px;
+            }
+            p {
+                color: rgb(255, 216, 209);
+                margin: 0;
+            }
+        }
+    }
+
+    .signup {
+        color: rgb(253, 212, 212);
+        width: 50%;
+
+        .tabs {
+            display: flex;
+            .tab {
+                width: 50%;
+                text-align: center;
+                padding: .8rem 0;
+                border-bottom: 2px solid rgb(253, 212, 212);
+                cursor: pointer;
+                &:hover {
+                    background-color: rgba(104, 42, 42, 0.459);
+                }
+                
+            }
+            .signintab {
+                font-weight: bold;  
+            }
+            
+            .signuptab {
+                border-bottom: 2px solid rgb(92, 50, 50);
+            }
+            
+            
+        }
+
+        h1 {
+            padding: 10px;
+        }
+
+        form {
+            padding: 20px;
+            button {
+                font-weight: bold;
+                border-radius: 10px;
+                color: rgb(255, 216, 209);
+                background-color: rgb(92, 50, 50);
+                border: none;
+                padding: 8px 45px 11px 45px;
+                // &:active {
+                    
+                // }
+            }
+        }
+
+        .form-control {
+            border: none;
+            margin: .15rem 0;
+            background-color: rgb(255, 216, 209);
+        }
+
+    }
+}

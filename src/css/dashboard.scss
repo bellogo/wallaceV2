@@ -1,0 +1,51 @@
+@import "~bootstrap/scss/bootstrap";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    overflow: hidden;
+
+}
+
+
+nav {
+    padding: 20px;
+    background-color: rgba(20, 4, 4, 0.904);
+    display: flex;
+    justify-content: space-between;
+    color: white;
+
+    img {
+        width: 120px;
+    }
+
+    div {
+        display: flex;
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            // color: #000;
+        }
+
+        img {
+            display: none;
+        }
+    }
+}
+
+.containall {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../images/pale_red_white_shadow-644060.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

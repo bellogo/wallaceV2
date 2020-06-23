@@ -1,8 +1,8 @@
 import 'bootstrap';
 import '../css/index.scss';
 
-import {User} from './user'
-import {Store} from './store'
+import {User} from './user';
+import {Store} from './store';
 
 class UI {
     static changeTab (el) {
@@ -26,10 +26,15 @@ class UI {
 }
 
 //EVENT LISTENERS
+window.addEventListener("load", () => {
+    if (localStorage.getItem('session') !== null){
+        location.replace('dashboard.html');
+    }
+});
 
 document.querySelector('.tabs').addEventListener('click', (e) =>{
      UI.changeTab(e.target);
-})
+});
 
 // submit signup form
 document.querySelector('#signupform').addEventListener('submit', (e) => {
@@ -45,7 +50,7 @@ document.querySelector('#signupform').addEventListener('submit', (e) => {
     const user = new User (firstname, lastname, email, password);
     // add user to local storage
     Store.addUsers(user);
-})
+});
 
 // submit signin form
 
@@ -59,6 +64,7 @@ document.querySelector('#signinform').addEventListener('submit', (e) => {
     const index = Store.findUser(signinemail);
 
     if (index !== undefined && signinpassword === users[index].password){
+        Store.createSession(signinemail);
         location.replace('dashboard.html');
     }
-})
+});

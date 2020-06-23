@@ -25,19 +25,19 @@ class Store {
             if(useremail == user.email){
                 ind = index;
            }
-        })
+        });
         return ind;
     }
-    static removeBook(email) {
-        const books = Store.getBooks();
-
-        books.forEach((book, index) => {
-            if (book.isbn === isbn) {
-                books.splice(index, 1);
-            }
-        });
-
-        localStorage.setItem('books', JSON.stringify(books));
+    static createSession(email){
+        localStorage.setItem('session', email);
+        console.log('session created');
     }
+
+    static endSession(){
+        localStorage.removeItem('session');
+        alert('session ended');
+        location.replace('index.html');
+    }
+
 }
 export {Store};

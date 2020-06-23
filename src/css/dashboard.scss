@@ -11,7 +11,7 @@
 
 
 nav {
-    padding: 20px;
+    padding: 10px;
     background-color: rgba(20, 4, 4, 0.904);
     display: flex;
     justify-content: space-between;
@@ -23,13 +23,29 @@ nav {
 
     div {
         display: flex;
+        align-items: center;
 
         p {
-            margin: 0;
+            margin: 0 5px;
         }
 
         a {
-            // color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            color: rgb(255, 216, 209);
+            background-color: rgb(92, 50, 50);
+            border: none;
+            padding: 8px 45px 11px 45px;
+            &:hover {
+                text-decoration: none;
+                color: rgb(255, 216, 209);
+                background-color: rgb(139, 77, 77);
+
+            }
+            &:active {
+                color: rgb(139, 77, 77);
+            }
         }
 
         img {

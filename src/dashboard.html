@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.13.1/js/all.js" integrity="sha384-heKROmDHlJdBb+n64p+i+wLplNYUZPaZmp2HZ4J6KCqzmd33FJ8QClrOV3IdHZm5" crossorigin="anonymous"></script>
     <title>Dashboard</title>
 </head>
 <body>
@@ -11,11 +12,26 @@
         <div>
             <p>Welcome, <span id="username"></span></p>
             <a id="logout" href="#">Log out</a>
+            <a href="#" title="delete account"><i class="fas fa-user-slash" data-target="#deleteModal" data-toggle="modal" data-target="#deleteModal"></i></a>
+           
             <img src="./images/favicon.png" alt="burger">
         </div>
         
     </nav>
-    <div class="containall"> 
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body">
+             <p>Are you sure you want to delete your account?</p>
+             <div>
+                <button id="deleteaccount" type="button" class="btn btn-sm btn-primary">Yes</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="containall">
     </div>
 </body>
 </html>

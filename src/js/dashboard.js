@@ -19,3 +19,7 @@ window.addEventListener('load', () => {
 document.querySelector('#logout').addEventListener('click', () => {
     Store.endSession();
 });
+
+document.querySelector('#deleteaccount').addEventListener('click', () => {
+    Store.removeUser(localStorage.getItem('session'));
+});

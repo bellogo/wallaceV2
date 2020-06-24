@@ -50,6 +50,7 @@ document.querySelector('#signupform').addEventListener('submit', (e) => {
     const user = new User (firstname, lastname, email, password);
     // add user to local storage
     Store.addUsers(user);
+    document.querySelector('#signupform').reset();
 });
 
 // submit signin form

@@ -30,13 +30,14 @@ nav {
         }
 
         a {
+            margin: 0 5px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 10px;
             color: rgb(255, 216, 209);
             background-color: rgb(92, 50, 50);
             border: none;
-            padding: 8px 45px 11px 45px;
+            padding: 8px 20px;
             &:hover {
                 text-decoration: none;
                 color: rgb(255, 216, 209);
@@ -44,10 +45,9 @@ nav {
 
             }
             &:active {
-                color: rgb(139, 77, 77);
+                background-color: rgb(139, 77, 77);
             }
         }
-
         img {
             display: none;
         }
@@ -55,13 +55,9 @@ nav {
 }
 
 .containall {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
     width: 100%;
     min-height: 100vh;
     background-image: url('../images/pale_red_white_shadow-644060.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; 
 }

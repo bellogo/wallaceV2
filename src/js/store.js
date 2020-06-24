@@ -35,8 +35,15 @@ class Store {
 
     static endSession(){
         localStorage.removeItem('session');
-        alert('session ended');
         location.replace('index.html');
+    }
+
+    static removeUser(email) {
+        const users = Store.getUsers();
+        const index = Store.findUser(email);
+        users.splice(index, 1);
+        localStorage.setItem('users', JSON.stringify(users));
+        Store.endSession();
     }
 
 }

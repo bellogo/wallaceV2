@@ -68,13 +68,13 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html",
-            favicon: "./src/images/favicon.png",
+            favicon: "./src/images/favicon.svg",
             chunks: ['index']  
         }),
         new HtmlWebPackPlugin({
             template: "./src/dashboard.html",
             filename: "./dashboard.html",
-            favicon: "./src/images/favicon.png",
+            favicon: "./src/images/favicon.svg",
             chunks: ['dashboard']  
         }),
         new MiniCssExtractPlugin({

@@ -41,15 +41,18 @@ class UI {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
-    static rememberUser(){
-        
-    }
 }
 
 //EVENT LISTENER(S
 window.addEventListener("load", () => {
     if (localStorage.getItem('session') !== null) {
         location.replace('dashboard.html');
+    }
+    if (localStorage.getItem('logindetails') !== null) {
+        const logindetails = JSON.parse(localStorage.getItem('logindetails'));
+        document.querySelector('#signinemail').value = logindetails.email;
+        document.querySelector('#signinpassword').value = logindetails.password;
+        document.querySelector('#rememberme').checked = true;
     }
 });
 
@@ -93,8 +96,17 @@ document.querySelector('#signinform').addEventListener('submit', (e) => {
     // get signin form values
     const signinemail = document.querySelector('#signinemail').value;
     const signinpassword = document.querySelector('#signinpassword').value;
+    const rememberme = document.querySelector('#rememberme').checked;
     const users = Store.getUsers();
     const index = Store.findUser(signinemail);
+    
+    //remember me
+    if(rememberme == true){
+        const logindetails = {email: signinemail, password: signinpassword};
+        localStorage.setItem('logindetails', JSON.stringify(logindetails));
+    }else{
+        localStorage.removeItem('logindetails');
+    }
 
     // Validate
     if (!signinemail || !signinpassword) {

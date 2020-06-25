@@ -9,7 +9,6 @@
 
 }
 
-
 nav {
     padding: 10px;
     background-color: rgba(20, 4, 4, 0.904);
@@ -17,8 +16,13 @@ nav {
     justify-content: space-between;
     color: white;
 
-    img {
+    
+    .logosvg {
         width: 120px;
+        
+        svg {
+            fill: rgb(211, 177, 177);  
+        }
     }
 
     div {

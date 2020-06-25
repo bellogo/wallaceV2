@@ -66,7 +66,7 @@ document.querySelector('#signupform').addEventListener('submit', (e) => {
     // get form values
     const firstname = document.querySelector('#fname').value;
     const lastname = document.querySelector('#lname').value;
-    const email = document.querySelector('#email').value;
+    const email = document.querySelector('#email').value.toLowerCase();
     const password = document.querySelector('#password').value;
     const passwordv = document.querySelector('#passwordv').value;
     // Validate
@@ -85,6 +85,8 @@ document.querySelector('#signupform').addEventListener('submit', (e) => {
         Store.addUsers(user);
         UI.showAlert('Account created successfully', 'success');
         document.querySelector('#signupform').reset();
+        //change to sign in
+        UI.changeTab(document.querySelector('.signintab'));
     }
 });
 
@@ -94,7 +96,7 @@ document.querySelector('#signinform').addEventListener('submit', (e) => {
     e.preventDefault();
 
     // get signin form values
-    const signinemail = document.querySelector('#signinemail').value;
+    const signinemail = document.querySelector('#signinemail').value.toLowerCase();
     const signinpassword = document.querySelector('#signinpassword').value;
     const rememberme = document.querySelector('#rememberme').checked;
     const users = Store.getUsers();

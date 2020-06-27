@@ -16,12 +16,13 @@ nav {
     justify-content: space-between;
     color: white;
 
-    
+
     .logosvg {
         width: 120px;
-        
+
         svg {
-            fill: rgb(211, 177, 177);  
+            fill: rgb(211, 177, 177);
+            margin-right: 10px;
         }
     }
 
@@ -42,16 +43,20 @@ nav {
             background-color: rgb(92, 50, 50);
             border: none;
             padding: 8px 20px;
+            white-space: nowrap;
+
             &:hover {
                 text-decoration: none;
                 color: rgb(255, 216, 209);
                 background-color: rgb(139, 77, 77);
 
             }
+
             &:active {
                 background-color: rgb(139, 77, 77);
             }
         }
+
         img {
             display: none;
         }
@@ -63,42 +68,82 @@ nav {
     min-height: 100vh;
     background-image: url('../images/pale_red_white_shadow-644060.jpg');
     background-repeat: no-repeat;
-    background-size: cover; 
-    .alertdiv{
+    background-size: cover;
+
+    .alertdiv {
         height: 50px;
         width: 100%;
     }
-    
+
+
 }
 
 .main {
-    form {
-        background-color: rgba(63, 26, 26, 0.425);
-        width: 480px;
-        // border: 2px solid white;
-        border-radius: 10px;
-        // color: white;
-        padding: 30px;
-        h4 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: rgb(255, 234, 231);
+    .row {
+        padding: 0 50px;
+
+        .balance {
+            max-width: 360px;
+            padding: 20px;
+            border: 2px solid white;
+
+            h5 {
+                color: white;
+
+            }
+
+            div {
+                display: flex;
+                justify-content: flex-start;
+                height: 40px;
+                svg {
+                    margin-top: 5px;
+                    fill: white;
+                    margin-right: 5px;
+                }
+
+                .currentbalance {
+                    color: white;
+                    font-size: 2rem;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
         }
-        .form-control, select {
-            border: none;
-            margin: .15rem 0;
-            background-color: rgb(255, 234, 231);
-        }
-        button {
-            font-weight: bold;
-            // border-radius: 10px;
-            color: rgb(255, 216, 209);
-            background-color: rgb(92, 50, 50);
-            border-color: rgb(92, 50, 50);
-            // padding: 8px 45px 11px 45px;
-            // &:active {
-                
-            // }
+
+        form {
+            background-color: rgba(63, 26, 26, 0.425);
+            max-width: 480px;
+            // border: 2px solid white;
+            border-radius: 10px;
+            // color: white;
+            padding: 30px;
+
+            h4 {
+                text-align: center;
+                margin-bottom: 30px;
+                color: rgb(255, 234, 231);
+            }
+
+            .form-control,
+            select {
+                border: none;
+                margin: .15rem 0;
+                background-color: rgb(255, 234, 231);
+            }
+
+            button {
+                font-weight: bold;
+                // border-radius: 10px;
+                color: rgb(255, 216, 209);
+                background-color: rgb(92, 50, 50);
+                border-color: rgb(92, 50, 50);
+                // padding: 8px 45px 11px 45px;
+                // &:active {
+
+                // }
+            }
         }
     }
+
 }

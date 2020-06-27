@@ -52,18 +52,18 @@ class Storage {
 
     // ACCESSING LOCALSTORAGE FOR TRANSACTIONS
     static getAllTransactions() {
-        let Transactions;
-        if (localStorage.getItem('Transactions') === null) {
-            Transactions = [];
+        let transactions;
+        if (localStorage.getItem('transactions') === null) {
+            transactions = [];
         } else {
-            Transactions = JSON.parse(localStorage.getItem('Transactions'));
+            transactions = JSON.parse(localStorage.getItem('transactions'));
         }
 
-        return Transactions;
+        return transactions;
     }
 
     static addTransaction(transaction) {
-        const transactions = Storage.getAllTransactions();
+        let transactions = Storage.getAllTransactions();
         transactions.push(transaction);
         localStorage.setItem('transactions', JSON.stringify(transactions));
     }

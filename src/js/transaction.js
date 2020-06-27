@@ -1,3 +1,36 @@
+import {Storage} from './store';
+
+
+class Transaction {
+    constructor (description, type, amount, date) {
+        this.description = description;
+        this.type = type;
+        this.amount = amount;
+        this.date = date;
+        this.id = transactionid(type);
+        this.email = localStorage.getItem('session');
+    }
+    
+    creditAccount () {
+        const users = Storage.getUsers();
+        const index = Storage.findUser(localStorage.getItem('session'));
+        let currentBalance = parseInt(users[index].balance, 10);
+        const currentAmount = parseInt(this.amount, 10);
+        currentBalance += currentAmount;
+        users[index].balance = currentBalance;
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+    debitAccount () {
+        const users = Storage.getUsers();
+        const index = Storage.findUser(localStorage.getItem('session'));
+        let currentBalance = parseInt(users[index].balance, 10);
+        const currentAmount = parseInt(this.amount, 10);
+        currentBalance -= currentAmount;
+        users[index].balance = currentBalance;
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+}
+
 const transactionid = (type) => {
     let id;
     //check if this is the first id to be created
@@ -14,20 +47,6 @@ const transactionid = (type) => {
         return id;
     }
 };
-
-class Transaction {
-    constructor (description, type, amount, date) {
-        this.description = description;
-        this.type = type;
-        this.amount = amount;
-        this.date = date;
-        this.id = transactionid(type);
-        this.email = localStorage.getItem('session');
-    }
-    
-}
-
-
 
 export {
     Transaction

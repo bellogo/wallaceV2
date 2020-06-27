@@ -23,11 +23,22 @@ class UI {
         // Vanish in 3 seconds
         setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
+    static updateBalance() {
+        const users = Storage.getUsers();
+        const index = Storage.findUser(localStorage.getItem('session'));
+        let balance = users[index].balance;
+        // Seperate number with commas function
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        document.querySelector('.currentbalance').innerHTML = `${numberWithCommas(balance)}`;  
+    }
 }
 
 // EVENT LISTENERS
 window.addEventListener('load', () => {
     UI.updateUserName();
+    UI.updateBalance();
 });
 
 document.querySelector('#logout').addEventListener('click', () => {
@@ -47,6 +58,7 @@ document.querySelector('#transactionform').addEventListener('submit', (e) => {
     const description = document.querySelector('#description').value;
 
     //Bootstrap Validation
+    document.querySelector('#transactionform').classList.remove('was-validated');
     if (document.querySelector('#transactionform').checkValidity() === false) {
         document.querySelector('#transactionform').classList.add('was-validated');
     } else {
@@ -54,6 +66,12 @@ document.querySelector('#transactionform').addEventListener('submit', (e) => {
         const transaction = new Transaction(description, transactiontype, amount, date);
         // add Transaction to local storage
         Storage.addTransaction(transaction);
+        if(transactiontype === 'Credit'){
+            transaction.creditAccount();
+        }else if (transactiontype === 'Debit'){
+            transaction.debitAccount();
+        }
+        UI.updateBalance();
         UI.showAlert('Transaction saved successfully', 'success');
         document.querySelector('#transactionform').reset();
     }

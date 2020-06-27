@@ -5,7 +5,7 @@ import {
     User
 } from './user';
 import {
-    Store
+    Storage
 } from './store';
 
 class UI {
@@ -48,10 +48,10 @@ window.addEventListener("load", () => {
     if (localStorage.getItem('session') !== null) {
         location.replace('dashboard.html');
     }
-    if (localStorage.getItem('logindetails') !== null) {
-        const logindetails = JSON.parse(localStorage.getItem('logindetails'));
-        document.querySelector('#signinemail').value = logindetails.email;
-        document.querySelector('#signinpassword').value = logindetails.password;
+    if (localStorage.getItem('rememberedemail') !== null) {
+        const rememberedemail = localStorage.getItem('rememberedemail');
+        document.querySelector('#signinemail').value = rememberedemail;
+        document.querySelector('#signinpassword').value = Storage.getUsers()[Storage.findUser(rememberedemail)].password;
         document.querySelector('#rememberme').checked = true;
     }
 });
@@ -76,13 +76,13 @@ document.querySelector('#signupform').addEventListener('submit', (e) => {
         UI.showAlert('Both passwords must match', 'danger');
     } else if(!UI.validateEmail(email)){
         UI.showAlert('Invalid Email', 'danger');
-    }else if (Store.findUser(email) !== undefined) {
+    }else if (Storage.findUser(email) !== undefined) {
         UI.showAlert('User already exists', 'danger');
     } else {
         // instantiate a user
         const user = new User(firstname, lastname, email, password);
         // add user to local storage
-        Store.addUsers(user);
+        Storage.addUsers(user);
         UI.showAlert('Account created successfully', 'success');
         document.querySelector('#signupform').reset();
         //change to sign in
@@ -99,15 +99,14 @@ document.querySelector('#signinform').addEventListener('submit', (e) => {
     const signinemail = document.querySelector('#signinemail').value.toLowerCase();
     const signinpassword = document.querySelector('#signinpassword').value;
     const rememberme = document.querySelector('#rememberme').checked;
-    const users = Store.getUsers();
-    const index = Store.findUser(signinemail);
+    const users = Storage.getUsers();
+    const index = Storage.findUser(signinemail);
     
     //remember me
     if(rememberme == true){
-        const logindetails = {email: signinemail, password: signinpassword};
-        localStorage.setItem('logindetails', JSON.stringify(logindetails));
+        localStorage.setItem('rememberedemail', signinemail);
     }else{
-        localStorage.removeItem('logindetails');
+        localStorage.removeItem('rememberedemail');
     }
 
     // Validate
@@ -120,7 +119,7 @@ document.querySelector('#signinform').addEventListener('submit', (e) => {
     }else if (index !== undefined && signinpassword !== users[index].password) {
         UI.showAlert('Wrong password, try again', 'danger');
     }else if (index !== undefined && signinpassword === users[index].password) {
-        Store.createSession(signinemail);
+        Storage.createSession(signinemail);
         location.replace('dashboard.html');
     }
 });

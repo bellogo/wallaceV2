@@ -1,4 +1,5 @@
-class Store {
+class Storage {
+    // ACCESSING LOCALSTORAGE FOR USERS
     static getUsers() {
         let users;
         if (localStorage.getItem('users') === null) {
@@ -11,16 +12,16 @@ class Store {
     }
 
     static addUsers(user) {
-        const users = Store.getUsers();
+        const users = Storage.getUsers();
         users.push(user);
         localStorage.setItem('users', JSON.stringify(users));
     }
 
-    // if user Store.finduser(useremail) returns undefined user doesnt exist
+    // if user Storage.finduser(useremail) returns undefined user doesnt exist
     //if user does this method would return its index
     static findUser(useremail) {
         let ind;
-        const users = Store.getUsers();
+        const users = Storage.getUsers();
         users.forEach((user, index) => {
             if(useremail == user.email){
                 ind = index;
@@ -28,6 +29,9 @@ class Store {
         });
         return ind;
     }
+
+    // ACCESSING LOCALSTORAGE FOR USER SESSION Email
+
     static createSession(email){
         localStorage.setItem('session', email);
         console.log('session created');
@@ -39,12 +43,42 @@ class Store {
     }
 
     static removeUser(email) {
-        const users = Store.getUsers();
-        const index = Store.findUser(email);
+        const users = Storage.getUsers();
+        const index = Storage.findUser(email);
         users.splice(index, 1);
         localStorage.setItem('users', JSON.stringify(users));
-        Store.endSession();
+        Storage.endSession();
+    }
+
+    // ACCESSING LOCALSTORAGE FOR TRANSACTIONS
+    static getAllTransactions() {
+        let Transactions;
+        if (localStorage.getItem('Transactions') === null) {
+            Transactions = [];
+        } else {
+            Transactions = JSON.parse(localStorage.getItem('Transactions'));
+        }
+
+        return Transactions;
+    }
+
+    static addTransaction(transaction) {
+        const transactions = Storage.getAllTransactions();
+        transactions.push(transaction);
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+    }
+
+    // return an array of transactions by a particular user
+    static userTransactions(email) {
+        let userTransactions = [];
+        const transactions = Storage.getAllTransactions();
+        transactions.forEach((transaction, index) => {
+            if(email === transaction.email){
+                userTransactions.push(transaction);
+           }
+        });
+        return userTransactions;
     }
 
 }
-export {Store};
+export {Storage};

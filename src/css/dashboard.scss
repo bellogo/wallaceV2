@@ -64,4 +64,41 @@ nav {
     background-image: url('../images/pale_red_white_shadow-644060.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
+    .alertdiv{
+        height: 50px;
+        width: 100%;
+    }
+    
+}
+
+.main {
+    form {
+        background-color: rgba(63, 26, 26, 0.425);
+        width: 480px;
+        // border: 2px solid white;
+        border-radius: 10px;
+        // color: white;
+        padding: 30px;
+        h4 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: rgb(255, 234, 231);
+        }
+        .form-control, select {
+            border: none;
+            margin: .15rem 0;
+            background-color: rgb(255, 234, 231);
+        }
+        button {
+            font-weight: bold;
+            // border-radius: 10px;
+            color: rgb(255, 216, 209);
+            background-color: rgb(92, 50, 50);
+            border-color: rgb(92, 50, 50);
+            // padding: 8px 45px 11px 45px;
+            // &:active {
+                
+            // }
+        }
+    }
 }

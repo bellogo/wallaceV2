@@ -50,7 +50,7 @@ document.querySelector('#transactionform').addEventListener('submit', (e) => {
     if (document.querySelector('#transactionform').checkValidity() === false) {
         document.querySelector('#transactionform').classList.add('was-validated');
     } else {
-        // instantiate a user
+        // instantiate a Transaction
         const transaction = new Transaction(description, transactiontype, amount, date);
         // add Transaction to local storage
         Storage.addTransaction(transaction);

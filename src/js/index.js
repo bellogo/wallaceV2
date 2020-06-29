@@ -50,9 +50,14 @@ window.addEventListener("load", () => {
     }
     if (localStorage.getItem('rememberedemail') !== null) {
         const rememberedemail = localStorage.getItem('rememberedemail');
+        //check to make sure user account is not deleted if it is forget email on signup page
+        if(Storage.findUser(rememberedemail) === undefined){
+            localStorage.removeItem('rememberedemail');
+        }else{
         document.querySelector('#signinemail').value = rememberedemail;
         document.querySelector('#signinpassword').value = Storage.getUsers()[Storage.findUser(rememberedemail)].password;
         document.querySelector('#rememberme').checked = true;
+        }
     }
 });
 

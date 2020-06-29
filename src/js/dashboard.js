@@ -8,6 +8,19 @@ import {
     Transaction
 } from './transaction';
 
+
+// const trial = (email) => {
+//     let transactions = Storage.getAllTransactions();
+//     transactions.forEach((transaction, index) => {
+//         if(email === transaction.email){
+//             transactions.splice(index, 1);
+//        }
+//     });
+//     localStorage.setItem('transactions', JSON.stringify(transactions));
+// };
+// trial(localStorage.getItem('session'));
+
+
 class UI {
     static updateUserName() {
         const users = Storage.getUsers();

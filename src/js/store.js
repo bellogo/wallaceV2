@@ -43,6 +43,17 @@ class Storage {
     }
 
     static removeUser(email) {
+        //Delete all transactions by a particular user
+        let transactions = Storage.getAllTransactions();
+        let newArray = [];
+        transactions.forEach((transaction, index) => {
+            if(email !== transaction.email){
+                newArray.push(transaction);
+           }
+        }); 
+        localStorage.setItem('transactions', JSON.stringify(newArray));
+    
+        // delete user
         const users = Storage.getUsers();
         const index = Storage.findUser(email);
         users.splice(index, 1);
@@ -80,5 +91,6 @@ class Storage {
         return userTransactions;
     }
 
+    
 }
 export {Storage};

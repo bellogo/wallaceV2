@@ -14,7 +14,7 @@ class Transaction {
     creditAccount () {
         const users = Storage.getUsers();
         const index = Storage.findUser(localStorage.getItem('session'));
-        let currentBalance = users[index].balance;
+        let currentBalance = Storage.calculateBalance(localStorage.getItem('session'));
         const inputedAmount = this.amount;
         currentBalance += inputedAmount;
         users[index].balance = currentBalance;
@@ -24,7 +24,7 @@ class Transaction {
     debitAccount () {
         const users = Storage.getUsers();
         const index = Storage.findUser(localStorage.getItem('session'));
-        let currentBalance = users[index].balance;
+        let currentBalance = Storage.calculateBalance(localStorage.getItem('session'));
         const inputedAmount = this.amount;
         currentBalance -= inputedAmount;
         users[index].balance = currentBalance;

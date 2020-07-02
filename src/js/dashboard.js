@@ -107,9 +107,8 @@ document.querySelector('#transactionform').addEventListener('submit', (e) => {
 document.querySelector('#table').addEventListener('click', (e) => {
     //delete transaction from UI
     UI.deleteTransaction(e.target);
-    //delete transaction from store
-    const id = parseInt(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent, 10);
     //delete transaction from storage
+    const id = parseInt(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent, 10);
     Storage.deleteTransaction(id);
     UI.showAlert('Transaction deleted successfully', 'success');
     UI.updateBalance();

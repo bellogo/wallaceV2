@@ -8,19 +8,6 @@ import {
     Transaction
 } from './transaction';
 
-
-// const trial = (email) => {
-//     let transactions = Storage.getAllTransactions();
-//     transactions.forEach((transaction, index) => {
-//         if(email === transaction.email){
-//             transactions.splice(index, 1);
-//        }
-//     });
-//     localStorage.setItem('transactions', JSON.stringify(transactions));
-// };
-// trial(localStorage.getItem('session'));
-
-
 class UI {
     static updateUserName() {
         const users = Storage.getUsers();
@@ -36,22 +23,45 @@ class UI {
         // Vanish in 3 seconds
         setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
+     // Seperate number with commas function
+    static numberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     static updateBalance() {
-        const users = Storage.getUsers();
-        const index = Storage.findUser(localStorage.getItem('session'));
-        let balance = users[index].balance;
-        // Seperate number with commas function
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        let balance = Storage.calculateBalance(localStorage.getItem('session'));
+        document.querySelector('.currentbalance').innerHTML = `${this.numberWithCommas(balance)}`;
+    }
+    static addTransactionToList(transaction) {
+        const tablebody = document.querySelector('#table');
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${transaction.date}</td>
+        <td>${transaction.id}</td>
+        <td>${transaction.type}</td>
+        <td>${this.numberWithCommas(transaction.amount)}</td>
+        <td>${this.numberWithCommas(transaction.balance)}</td>
+        <td>${transaction.description}</td>
+        <td><a href="#" class="delete btn btn-danger btn-sm">Delete</a></td>
+        `;
+        tablebody.appendChild(row);
+    }
+    static displayTransactions () {
+        const usertransactions = Storage.userTransactions(localStorage.getItem('session'));
+        usertransactions.forEach(transaction => UI.addTransactionToList(transaction));
+    }
+    static deleteTransaction(el) {
+        if(el.classList.contains('delete')){
+            el.parentElement.parentElement.remove();
         }
-        document.querySelector('.currentbalance').innerHTML = `${numberWithCommas(balance)}`;  
     }
 }
 
 // EVENT LISTENERS
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     UI.updateUserName();
     UI.updateBalance();
+    UI.displayTransactions();
 });
 
 document.querySelector('#logout').addEventListener('click', () => {
@@ -77,15 +87,30 @@ document.querySelector('#transactionform').addEventListener('submit', (e) => {
     } else {
         // instantiate a Transaction
         const transaction = new Transaction(description, transactiontype, amount, date);
-        // add Transaction to local storage
-        Storage.addTransaction(transaction);
-        if(transactiontype === 'Credit'){
+
+        if (transactiontype === 'Credit') {
             transaction.creditAccount();
-        }else if (transactiontype === 'Debit'){
+        } else if (transactiontype === 'Debit') {
             transaction.debitAccount();
         }
+        // add Transaction to local storage
+        Storage.addTransaction(transaction);
+
         UI.updateBalance();
+        UI.addTransactionToList(transaction);
         UI.showAlert('Transaction saved successfully', 'success');
         document.querySelector('#transactionform').reset();
     }
+});
+
+//delete event listener
+document.querySelector('#table').addEventListener('click', (e) => {
+    //delete transaction from UI
+    UI.deleteTransaction(e.target);
+    //delete transaction from store
+    const id = parseInt(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent, 10);
+    //delete transaction from storage
+    Storage.deleteTransaction(id);
+    UI.showAlert('Transaction deleted successfully', 'success');
+    UI.updateBalance();
 });

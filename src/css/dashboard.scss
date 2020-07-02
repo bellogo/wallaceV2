@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    overflow: hidden;
+    // overflow: hidden;
 
 }
 
@@ -78,7 +78,7 @@ nav {
 
 }
 
-.main {
+
     .row {
         padding: 0 50px;
 
@@ -124,9 +124,14 @@ nav {
                 margin-bottom: 30px;
                 color: rgb(255, 234, 231);
             }
+            #amount {
+                margin-bottom: 15px;
+            }
 
             .form-control,
             select {
+                
+
                 border: none;
                 margin: .15rem 0;
                 background-color: rgb(255, 234, 231);
@@ -146,4 +151,17 @@ nav {
         }
     }
 
+#svg {
+    .fil0 {
+        fill: rgba(235, 223, 223, 0.555);
+    }
+    .fil1 {
+        fill: rgb(139, 77, 77);
+    }
+}
+
+.transactiontable {
+    h3 {
+        color: white;
+    }
 }

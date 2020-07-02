@@ -49,7 +49,7 @@
     <div>
       <p>Welcome, <span id="username"></span></p>
       <a id="logout" href="#">Log out</a>
-      <a data-target="#deleteModal" data-toggle="modal" href="#" title="delete account"><i class="fas fa-user-slash" 
+      <a data-target="#deleteModal" data-toggle="modal" href="#" title="delete account"><i class="fas fa-user-slash"
           data-target="#deleteModal"></i></a>
 
       <img src="./images/favicon.png" alt="burger">
@@ -79,9 +79,10 @@
     <!-- ALERT DIV -->
 
     <div class="alertdiv"></div>
+
     <div class="main container-fluid">
-      <div class="row">
-        <div class="balance col-md">
+      <div class="row d-flex justify-content-center">
+        <div class="balance col-md-6">
           <h5>Total Balance</h5>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="30px" height="100%" version="1.1"
@@ -95,11 +96,11 @@
             </svg>
             <p class="currentbalance"></p>
           </div>
-  
+
         </div>
         <!-- FORM -->
-  
-        <form id="transactionform" class="needs-validation col-md" novalidate>
+
+        <form id="transactionform" class="needs-validation col-md-6" novalidate>
           <h4>Enter a Transaction</h4>
           <div class="form-row">
             <div class="col-md-7 mb-3">
@@ -119,7 +120,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="form-row">
             <div class="col-md-5 mb-3">
               <input type="date" class="form-control" placeholder="date" id="date" required>
@@ -127,10 +128,9 @@
                 Please provide a date.
               </div>
             </div>
-  
+
             <div class="col-md-7 mb-3">
-              <input type="text" placeholder="Description" class="form-control" id="description" rows="1"
-                required>
+              <input type="text" placeholder="Description" class="form-control" id="description" rows="1" required>
               <div class="invalid-feedback">
                 Please describe your transaction.
               </div>
@@ -139,7 +139,27 @@
           <button class="btn btn-light" type="submit">Save Transaction</button>
         </form>
       </div>
-      
+      <div class="row transactiontable">
+        <div class="col-md transactiontable">
+          <h3>Transaction Report</h3>
+          <table class="table table-sm table-dark">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Ref#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="table" class="">
+            </tbody>
+        </div>
+
+      </div>
+
     </div>
 
 

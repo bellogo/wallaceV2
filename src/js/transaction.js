@@ -19,7 +19,8 @@ class Transaction {
         currentBalance += inputedAmount;
         users[index].balance = currentBalance;
         localStorage.setItem('users', JSON.stringify(users));
-    }
+        this.balance = currentBalance;
+    } 
     debitAccount () {
         const users = Storage.getUsers();
         const index = Storage.findUser(localStorage.getItem('session'));
@@ -28,7 +29,9 @@ class Transaction {
         currentBalance -= inputedAmount;
         users[index].balance = currentBalance;
         localStorage.setItem('users', JSON.stringify(users));
+        this.balance = currentBalance;
     }
+
 }
 
 const transactionid = (type) => {

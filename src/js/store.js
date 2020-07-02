@@ -91,6 +91,29 @@ class Storage {
         return userTransactions;
     }
 
-    
+    static deleteTransaction(id) {
+        let transactions = Storage.userTransactions(localStorage.getItem('session'));
+        transactions.forEach((transaction, index) => {
+            if(transaction.id === id){
+                transactions.splice(index, 1);
+            }
+        });
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+    }
+
+    //returns current balance
+    static calculateBalance(email) {
+        const alltransactions = Storage.userTransactions(email);
+        let creditotal = 0;
+        let debitotal = 0;
+        alltransactions.forEach(transaction => {
+            if (transaction.type === 'Credit') {
+                creditotal += transaction.amount;
+            } else {
+                debitotal += transaction.amount;
+            }
+        });
+    return creditotal - debitotal;
+    }    
 }
 export {Storage};

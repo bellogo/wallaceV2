@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.13.1/js/all.js"
     integrity="sha384-heKROmDHlJdBb+n64p+i+wLplNYUZPaZmp2HZ4J6KCqzmd33FJ8QClrOV3IdHZm5" crossorigin="anonymous">
   </script>
@@ -142,7 +143,7 @@
       <div class="row transactiontable">
         <div class="col-md transactiontable">
           <h3>Account Report</h3>
-          <table class="table table-sm table-dark">
+          <table class="table table-sm">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Date</th>
@@ -158,6 +159,9 @@
             </tbody>
         </div>
 
+      </div>
+      <div class="row">
+        <canvas id="myChart"></canvas>
       </div>
 
     </div>

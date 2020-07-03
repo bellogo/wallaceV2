@@ -23,21 +23,21 @@ class Storage {
         let ind;
         const users = Storage.getUsers();
         users.forEach((user, index) => {
-            if(useremail == user.email){
+            if (useremail == user.email) {
                 ind = index;
-           }
+            }
         });
         return ind;
     }
 
     // ACCESSING LOCALSTORAGE FOR USER SESSION Email
 
-    static createSession(email){
+    static createSession(email) {
         localStorage.setItem('session', email);
         console.log('session created');
     }
 
-    static endSession(){
+    static endSession() {
         localStorage.removeItem('session');
         location.replace('index.html');
     }
@@ -47,12 +47,12 @@ class Storage {
         let transactions = Storage.getAllTransactions();
         let newArray = [];
         transactions.forEach((transaction, index) => {
-            if(email !== transaction.email){
+            if (email !== transaction.email) {
                 newArray.push(transaction);
-           }
-        }); 
+            }
+        });
         localStorage.setItem('transactions', JSON.stringify(newArray));
-    
+
         // delete user
         const users = Storage.getUsers();
         const index = Storage.findUser(email);
@@ -84,9 +84,9 @@ class Storage {
         let userTransactions = [];
         const transactions = Storage.getAllTransactions();
         transactions.forEach((transaction, index) => {
-            if(email === transaction.email){
+            if (email === transaction.email) {
                 userTransactions.push(transaction);
-           }
+            }
         });
         return userTransactions;
     }
@@ -94,7 +94,7 @@ class Storage {
     static deleteTransaction(id) {
         let transactions = Storage.userTransactions(localStorage.getItem('session'));
         transactions.forEach((transaction, index) => {
-            if(transaction.id === id){
+            if (transaction.id === id) {
                 transactions.splice(index, 1);
             }
         });
@@ -113,7 +113,29 @@ class Storage {
                 debitotal += transaction.amount;
             }
         });
-    return creditotal - debitotal;
-    }    
+        return creditotal - debitotal;
+    }
+
+    // Get all balances in UserTransactions
+    static allUserBalances() {
+        const userTransactions = this.userTransactions(localStorage.getItem('session'));
+        let userBalances = [];
+        userTransactions.forEach(transaction => {
+            userBalances.push(transaction.balance);
+        });
+        return userBalances;
+    }
+    
+    // Get all user transaction dates
+    static allUserTransactionDates() {
+        const userTransactions = this.userTransactions(localStorage.getItem('session'));
+        let userTransactionDates = [];
+        userTransactions.forEach(transaction => {
+            userTransactionDates.push(transaction.date);
+        });
+        return userTransactionDates;
+    }
 }
-export {Storage};
+export {
+    Storage
+};

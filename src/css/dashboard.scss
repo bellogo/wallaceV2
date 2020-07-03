@@ -163,6 +163,16 @@ nav {
 
 .transactiontable {
     h3 {
-        color: white;
+        color: rgb(255, 234, 231);
+    }
+
+    #table {
+        background-color: rgba(255, 234, 231, 0.829);
+        .credit {
+            color: rgb(0, 128, 0);
+        }
+        .debit {
+            color: rgb(255, 0, 0);
+        }
     }
 }

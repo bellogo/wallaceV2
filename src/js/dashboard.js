@@ -8,6 +8,7 @@ import {
     Transaction
 } from './transaction';
 
+
 class UI {
     static updateUserName() {
         const users = Storage.getUsers();
@@ -23,7 +24,7 @@ class UI {
         // Vanish in 3 seconds
         setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
-     // Seperate number with commas function
+    // Seperate number with commas function
     static numberWithCommas(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -35,26 +36,64 @@ class UI {
     static addTransactionToList(transaction) {
         const tablebody = document.querySelector('#table');
         const row = document.createElement('tr');
-        row.innerHTML = `
+        if (transaction.type === 'Credit') {
+            row.innerHTML = `
         <td>${transaction.date}</td>
         <td>${transaction.id}</td>
         <td>${transaction.type}</td>
-        <td>${this.numberWithCommas(transaction.amount)}</td>
+        <td class="credit">${this.numberWithCommas(transaction.amount)}</td>
         <td>${this.numberWithCommas(transaction.balance)}</td>
         <td>${transaction.description}</td>
         <td><a href="#" class="delete btn btn-danger btn-sm">Delete</a></td>
         `;
-        tablebody.appendChild(row);
+        } else {
+            row.innerHTML = `
+            <td>${transaction.date}</td>
+            <td>${transaction.id}</td>
+            <td>${transaction.type}</td>
+            <td class="debit">${this.numberWithCommas(transaction.amount)}</td>
+            <td>${this.numberWithCommas(transaction.balance)}</td>
+            <td>${transaction.description}</td>
+            <td><a href="#" class="delete btn btn-danger btn-sm">Delete</a></td>
+            `;
+        }
+
+        // tablebody.appendChild(row);
+
+        tablebody.insertBefore(row, tablebody.childNodes[0]); //let recent transactions appear from the top of the table 
     }
-    static displayTransactions () {
+    static displayTransactions() {
         const usertransactions = Storage.userTransactions(localStorage.getItem('session'));
         usertransactions.forEach(transaction => UI.addTransactionToList(transaction));
     }
     static deleteTransaction(el) {
-        if(el.classList.contains('delete')){
+        if (el.classList.contains('delete')) {
             el.parentElement.parentElement.remove();
         }
     }
+
+    static runChart() {
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: Storage.allUserTransactionDates(),
+                datasets: [{
+                    label: 'Balance',
+                    backgroundColor: 'rgba(175, 122, 6, 0.5)',
+                    borderColor: 'rgb(175, 122, 6)',
+                    data: Storage.allUserBalances()
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    }
+
 }
 
 // EVENT LISTENERS
@@ -62,6 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
     UI.updateUserName();
     UI.updateBalance();
     UI.displayTransactions();
+    UI.runChart();
 });
 
 document.querySelector('#logout').addEventListener('click', () => {
@@ -98,6 +138,7 @@ document.querySelector('#transactionform').addEventListener('submit', (e) => {
 
         UI.updateBalance();
         UI.addTransactionToList(transaction);
+        UI.runChart();
         UI.showAlert('Transaction saved successfully', 'success');
         document.querySelector('#transactionform').reset();
     }
@@ -105,11 +146,16 @@ document.querySelector('#transactionform').addEventListener('submit', (e) => {
 
 //delete event listener
 document.querySelector('#table').addEventListener('click', (e) => {
-    //delete transaction from UI
-    UI.deleteTransaction(e.target);
-    //delete transaction from storage
-    const id = parseInt(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent, 10);
-    Storage.deleteTransaction(id);
-    UI.showAlert('Transaction deleted successfully', 'success');
-    UI.updateBalance();
+    if (e.target.classList.contains('delete')) {
+        //delete transaction from UI
+        UI.deleteTransaction(e.target);
+
+        //delete transaction from storage
+        const id = parseInt(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent, 10);
+        Storage.deleteTransaction(id);
+
+        UI.runChart();
+        UI.showAlert('Transaction deleted successfully', 'success');
+        UI.updateBalance();
+    }
 });

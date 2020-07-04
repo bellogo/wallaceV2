@@ -10,7 +10,7 @@
 }
 
 nav {
-    padding: 10px;
+    padding: 10px 30px;
     background-color: rgba(20, 4, 4, 0.904);
     display: flex;
     justify-content: space-between;
@@ -21,7 +21,7 @@ nav {
         width: 120px;
 
         svg {
-            fill: rgb(211, 177, 177);
+            fill: rgb(255, 234, 231);
             margin-right: 10px;
         }
     }
@@ -64,6 +64,10 @@ nav {
 }
 
 .containall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px 50px 50px;
     width: 100%;
     min-height: 100vh;
     background-image: url('../images/pale_red_white_shadow-644060.jpg');
@@ -71,108 +75,142 @@ nav {
     background-size: cover;
 
     .alertdiv {
-        height: 50px;
+        margin-top: 5px;
+        max-width: 1200px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 17px;
+        height: 55px;
         width: 100%;
     }
 
 
 }
+.main{
+    max-width: 1200px;
+
+}
+
+.toprow {
+    display: flex;
+    justify-content: space-between;
+    // padding: 0 40px;
 
 
-    .row {
-        padding: 0 50px;
+    .balance {
+        margin: 10px 0px;
+        max-width: 370.2px;
+        min-width: 300px;
+        max-height: 150px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(63, 26, 26, 0.425);
 
-        .balance {
-            max-width: 383.2px;
-            padding: 20px;
-            // border: 2px solid white;
-            background-color: rgba(63, 26, 26, 0.425);
-
-            h5 {
-                color: white;
-
-            }
-
-            div {
-                display: flex;
-                justify-content: flex-start;
-                height: 40px;
-                svg {
-                    margin-top: 5px;
-                    fill: white;
-                    margin-right: 5px;
-                }
-
-                .currentbalance {
-                    color: white;
-                    font-size: 2rem;
-                    margin: 0;
-                    padding: 0;
-                }
-            }
+        h5 {
+            color: rgb(255, 234, 231);
         }
 
-        form {
-            background-color: rgba(63, 26, 26, 0.425);
-            max-width: 480px;
-            // border: 2px solid white;
-            border-radius: 10px;
-            // color: white;
-            padding: 30px;
+        div {
+            display: flex;
+            justify-content: flex-start;
+            height: 40px;
 
-            h4 {
-                text-align: center;
-                margin-bottom: 30px;
+            svg {
+                margin-top: 5px;
+                fill: rgb(255, 234, 231);
+                margin-right: 5px;
+            }
+
+            .currentbalance {
                 color: rgb(255, 234, 231);
-            }
-            #amount {
-                margin-bottom: 15px;
-            }
-
-            .form-control,
-            select {
-                
-
-                border: none;
-                margin: .15rem 0;
-                background-color: rgb(255, 234, 231);
-            }
-
-            button {
-                font-weight: bold;
-                // border-radius: 10px;
-                color: rgb(255, 216, 209);
-                background-color: rgb(92, 50, 50);
-                border-color: rgb(92, 50, 50);
-                // padding: 8px 45px 11px 45px;
-                // &:active {
-
-                // }
+                font-size: 2rem;
+                margin: 0;
+                padding: 0;
             }
         }
     }
 
-#svg {
-    .fil0 {
-        fill: rgba(235, 223, 223, 0.555);
-    }
-    .fil1 {
-        fill: rgb(139, 77, 77);
+    form {
+        // margin: 10px;
+        background-color: rgba(63, 26, 26, 0.425);
+        max-width: 700px;
+        // border: 2px solid white;
+        border-radius: 10px;
+        // color: white;
+        padding: 30px;
+
+        h4 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: rgb(255, 234, 231);
+        }
+
+        #amount {
+            margin-bottom: 15px;
+        }
+
+        .form-control,
+        select {
+            border: none;
+            margin: .15rem 0;
+            background-color: rgb(255, 234, 231);
+        }
+
+        button {
+            font-weight: bold;
+            // border-radius: 10px;
+            color: rgb(255, 216, 209);
+            background-color: rgb(92, 50, 50);
+            border-color: rgb(92, 50, 50);
+            // padding: 8px 45px 11px 45px;
+            // &:active {
+
+            // }
+        }
     }
 }
 
 .transactiontable {
-    h3 {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    background-color: rgba(63, 26, 26, 0.425);
+
+    h4 {
         color: rgb(255, 234, 231);
+        margin-bottom: 20px;
     }
 
-    #table {
-        background-color: rgba(255, 234, 231, 0.829);
-        .credit {
-            color: rgb(0, 128, 0);
+    table {
+        max-width: 1200px;
+
+        .thead {
+            background-color: rgba(63, 26, 26, 0.425);
+            color: rgb(255, 234, 231);
         }
-        .debit {
-            color: rgb(255, 0, 0);
+
+        .tr {
+            background-color: rgba(255, 234, 231, 0.747);
+
+            .credit {
+                color: rgb(0, 128, 0);
+            }
+
+            .debit {
+                color: rgb(255, 0, 0);
+            }
         }
     }
+
+}
+
+canvas {
+    margin: 10px 0;
+    max-width: 1200px;
+    border-radius: 10px;
+    background-color: rgba(63, 26, 26, 0.425);
 }

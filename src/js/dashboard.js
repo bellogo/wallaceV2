@@ -10,10 +10,11 @@ import {
 
 
 class UI {
-    static updateUserName() {
+    static welcomeUser() {
         const users = Storage.getUsers();
         const index = Storage.findUser(localStorage.getItem('session'));
-        document.querySelector('#username').innerHTML = `${users[index].firstname} ${users[index].lastname}`;
+        this.showAlert(`Welcome, ${users[index].firstname} ${users[index].lastname}`, 'success');
+        // document.querySelector('#username').innerHTML = `${users[index].firstname} ${users[index].lastname}`;
     }
     static showAlert(message, className) {
         const div = document.createElement('div');
@@ -36,6 +37,7 @@ class UI {
     static addTransactionToList(transaction) {
         const tablebody = document.querySelector('#table');
         const row = document.createElement('tr');
+        row.classList.add('tr');
         if (transaction.type === 'Credit') {
             row.innerHTML = `
         <td>${transaction.date}</td>
@@ -74,6 +76,9 @@ class UI {
 
     static runChart() {
         var ctx = document.getElementById('myChart').getContext('2d');
+
+        // global options
+        Chart.defaults.global.defaultFontColor = 'rgb(255, 234, 231)';
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
@@ -83,14 +88,35 @@ class UI {
                 labels: Storage.allUserTransactionDates(),
                 datasets: [{
                     label: 'Balance',
-                    backgroundColor: 'rgba(175, 122, 6, 0.5)',
-                    borderColor: 'rgb(175, 122, 6)',
+                    backgroundColor: 'rgba(255, 234, 231, 0.2)',
+                    hoverBackgroundColor: 'blue',
+                    borderColor: 'rgb(255, 234, 231)',
+                    hoverBorderColor: 'red',
+                    pointRadius: 5,
                     data: Storage.allUserBalances()
                 }]
             },
 
             // Configuration options go here
-            options: {}
+            options: {
+                title:{
+                    display:true,
+                    text: 'Account balance history',
+                    fontSize: 25
+                },
+                legend:{
+                    display:false,
+                    // position:'right'
+                },
+                layout:{
+                    padding:30
+                },
+                gridLines: {
+                    display: true ,
+                    color: "#6FFF"
+                }
+
+            }
         });
     }
 
@@ -98,7 +124,7 @@ class UI {
 
 // EVENT LISTENERS
 window.addEventListener('DOMContentLoaded', () => {
-    UI.updateUserName();
+    UI.welcomeUser();
     UI.updateBalance();
     UI.displayTransactions();
     UI.runChart();

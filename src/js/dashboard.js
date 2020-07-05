@@ -99,17 +99,17 @@ class UI {
 
             // Configuration options go here
             options: {
-                title:{
-                    display:true,
-                    text: 'Account balance history',
-                    fontSize: 25
-                },
+                // title:{
+                //     display:true,
+                //     text: 'Account balance history',
+                //     fontSize: 15
+                // },
                 legend:{
                     display:false,
                     // position:'right'
                 },
                 layout:{
-                    padding:30
+                    // padding:30
                 },
                 gridLines: {
                     display: true ,

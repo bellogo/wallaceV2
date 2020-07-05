@@ -30,16 +30,13 @@ nav {
         display: flex;
         align-items: center;
 
-        p {
-            margin: 0 5px;
-        }
 
         a {
             margin: 0 5px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 10px;
-            color: rgb(255, 216, 209);
+            color: rgb(255, 234, 231);
             background-color: rgb(92, 50, 50);
             border: none;
             padding: 8px 20px;
@@ -86,7 +83,8 @@ nav {
 
 
 }
-.main{
+
+.main {
     max-width: 1200px;
 
 }
@@ -208,9 +206,91 @@ nav {
 
 }
 
-canvas {
-    margin: 10px 0;
+.chart {
+    margin: 20px 0;
+    background-color: rgba(63, 26, 26, 0.425);
+    padding: 40px;
+    h4{
+        color: rgb(255, 234, 231);
+    }
+    canvas {
+        width: 100%;
+        padding: 0;
+        margin: 10px 0;
     max-width: 1200px;
     border-radius: 10px;
-    background-color: rgba(63, 26, 26, 0.425);
+
+    }
+}
+
+
+@media screen and (max-width : 600px) {
+
+    nav {
+        padding: 10px;
+
+        #logout {
+            padding: 4px 10px 6px 10px;
+            margin-right: 5px;
+        }
+        div {
+            a {
+                padding: 4px 7px;
+                margin: 0;
+            }
+        }
+        
+    }
+
+    .containall {
+        padding: 0;
+        margin: 0;
+        .alertdiv {
+            height: 41px;
+            margin-bottom: 10px;
+            // .alert{
+            //     height: 41px;
+            // }
+        }
+    }
+
+    .main {
+        padding: 0 15px;
+        margin-bottom: 50px;
+        
+        .balance {
+            min-width: 100%;
+            margin: 0 0 20px 0;
+        }
+        #transactionform {
+            h4 {
+                margin-bottom: 15px;
+                text-align: left;
+
+            }
+            margin: 20px 0;
+            padding: 15px;
+        }
+        .transactiontable {
+           padding: 15px 0; 
+           h4{
+               text-align: left;
+               margin-bottom: 15px;
+           }
+        }
+        .chart {
+            width: 100%;
+            background-color: rgba(63, 26, 26, 0.425);
+            padding: 15px 0;
+            h4{
+                color: rgb(255, 234, 231);
+            }
+            canvas {
+                width: 100%;
+                padding: 0;
+            }
+        }
+        
+    }
+
 }

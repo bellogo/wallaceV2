@@ -123,7 +123,10 @@ class UI {
 }
 
 // EVENT LISTENERS
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
+    if (localStorage.getItem('session') === null) {
+        location.replace('index.html');
+    }
     UI.welcomeUser();
     UI.updateBalance();
     UI.displayTransactions();

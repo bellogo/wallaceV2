@@ -29,7 +29,7 @@ class UI {
 
     static showAlert(message, className) {
         const div = document.createElement('div');
-        div.className = `alert alert-${className}`;
+        div.className = `alert alert-${className} alertdiv`;
         div.appendChild(document.createTextNode(message));
         document.querySelector('.signupimg').appendChild(div);
 

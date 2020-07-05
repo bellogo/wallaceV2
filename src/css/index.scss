@@ -5,7 +5,6 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    overflow: hidden;
 
 }
 
@@ -36,12 +35,18 @@ body {
     margin: 1rem;
     width: 650px;
     min-height: 26.3rem;
+    overflow: hidden;
 
     .signupimg {
         width: 50%;
         background-image: url('../images/walletcropped.jpg');
         background-repeat: no-repeat;
         background-size: cover;
+
+        .alertdiv {
+            text-align: center;
+            font-weight: bold;
+        }
 
         .logo {
             background-color: rgba(37, 10, 10, 0.76);
@@ -50,13 +55,15 @@ body {
             flex-direction: column;
             align-items: center;
             padding: 15px;
+
             .logosvg {
                 width: 150px;
-                
+
                 svg {
-                    fill: rgb(235, 223, 223);  
+                    fill: rgb(235, 223, 223);
                 }
             }
+
             p {
                 color: rgb(255, 216, 209);
                 margin: 0;
@@ -70,26 +77,29 @@ body {
 
         .tabs {
             display: flex;
+
             .tab {
                 width: 50%;
                 text-align: center;
                 padding: .8rem 0;
                 border-bottom: 2px solid rgb(253, 212, 212);
                 cursor: pointer;
+
                 &:hover {
                     background-color: rgba(104, 42, 42, 0.459);
                 }
-                
+
             }
+
             .signintab {
-                font-weight: bold;  
+                font-weight: bold;
             }
-            
+
             .signuptab {
                 border-bottom: 2px solid rgb(92, 50, 50);
             }
-            
-            
+
+
         }
 
         h1 {
@@ -98,6 +108,7 @@ body {
 
         form {
             padding: 20px;
+
             button {
                 font-weight: bold;
                 border-radius: 10px;
@@ -105,12 +116,14 @@ body {
                 background-color: rgb(92, 50, 50);
                 border: none;
                 padding: 8px 45px 11px 45px;
+
                 &:hover {
                     background-color: rgba(92, 50, 50, 0.678);
                     // border-color: rgba(92, 50, 50, 0.678);
                     border: none;
- 
+
                 }
+
                 &:visited {
                     background-color: rgba(92, 50, 50, 0.137);
                     border: none;
@@ -125,4 +138,28 @@ body {
         }
 
     }
+}
+
+@media screen and (max-width : 600px) {
+
+    .containall {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .signupcontainer {
+        flex-direction: column;
+        width: 96%;
+        margin: 10px 0;
+
+        .signupimg {
+            width: 100%;
+            min-height: 270px;
+        }
+
+        .signup {
+            width: 100%;
+        }
+    }
+
 }

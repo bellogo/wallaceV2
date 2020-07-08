@@ -1,5 +1,5 @@
-import 'bootstrap';
 import '../css/dashboard.scss';
+import 'bootstrap';
 
 import {
     Storage

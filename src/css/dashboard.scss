@@ -5,8 +5,6 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    // overflow: hidden;
-
 }
 
 nav {
@@ -92,8 +90,6 @@ nav {
 .toprow {
     display: flex;
     justify-content: space-between;
-    // padding: 0 40px;
-
 
     .balance {
         margin: 10px 0px;
@@ -129,12 +125,9 @@ nav {
     }
 
     form {
-        // margin: 10px;
         background-color: rgba(63, 26, 26, 0.425);
         max-width: 700px;
-        // border: 2px solid white;
         border-radius: 10px;
-        // color: white;
         padding: 30px;
 
         h4 {
@@ -156,14 +149,9 @@ nav {
 
         button {
             font-weight: bold;
-            // border-radius: 10px;
             color: rgb(255, 216, 209);
             background-color: rgb(92, 50, 50);
             border-color: rgb(92, 50, 50);
-            // padding: 8px 45px 11px 45px;
-            // &:active {
-
-            // }
         }
     }
 }
@@ -173,7 +161,7 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 0px;
+    margin: 70px 0px;
     padding: 30px 40px;
     border-radius: 10px;
     background-color: rgba(63, 26, 26, 0.425);
@@ -207,7 +195,7 @@ nav {
 }
 
 .chart {
-    margin: 20px 0;
+    margin: 0 0 20px 0;
     background-color: rgba(63, 26, 26, 0.425);
     padding: 40px;
     h4{
@@ -248,9 +236,6 @@ nav {
         .alertdiv {
             height: 41px;
             margin-bottom: 10px;
-            // .alert{
-            //     height: 41px;
-            // }
         }
     }
 

@@ -1,5 +1,5 @@
-import 'bootstrap';
 import '../css/index.scss';
+import 'bootstrap';
 
 import {
     User

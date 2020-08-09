@@ -1,13 +1,8 @@
 # Wallace
 Ballance tracking for your wallet.
 
-<<<<<<< HEAD
 ![screenshot](./dashboardtop.png)
 ![screenshot](./dashboardbottom.png)
-=======
-![screenshot](./dashboard top.png)
-![screenshot](./dashboard bottom.png)
->>>>>>> 01a0681e85a25b46b1fb7a1c37b70c97d0f64267
 
 Wallace provides a way to make more informed financial decisions, by tracking your balance, through your income & expenditure. The balance from each account is visualized on a chart to help the user see their spending and earning history.
 
@@ -57,8 +52,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-<<<<<<< HEAD
 This project is jest licensed.
-=======
-This project is jest licensed.
->>>>>>> 01a0681e85a25b46b1fb7a1c37b70c97d0f64267

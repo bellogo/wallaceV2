@@ -1,8 +1,8 @@
 # Wallace
 Ballance tracking for your wallet.
 
-![screenshot](./dashboardtop.png)
-![screenshot](./dashboardbottom.png)
+![screenshot](./dashboard top.png)
+![screenshot](./dashboard bottom.png)
 
 Wallace provides a way to make more informed financial decisions, by tracking your balance, through your income & expenditure. The balance from each account is visualized on a chart to help the user see their spending and earning history.
 

@@ -1,5 +1,5 @@
 # Wallace
-Ballance tracking for your wallet.
+Balance tracking for your wallet.
 
 ![screenshot](./dashboardtop.png)
 ![screenshot](./dashboardbottom.png)

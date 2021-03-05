@@ -1,8 +1,8 @@
 # Wallace
 Balance tracking for your wallet.
 
-![screenshot](./dashboardtop.png)
-![screenshot](./dashboardbottom.png)
+![screenshot](./src/images/dashboardtop.png)
+![screenshot](./src/images/dashboardbottom.png)
 
 Wallace provides a way to make more informed financial decisions, by tracking your balance, through your income & expenditure. The balance from each account is visualized on a chart to help the user see their spending and earning history.
 
@@ -21,8 +21,7 @@ Wallace provides a way to make more informed financial decisions, by tracking yo
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
-
-To run this project, you will need to have `npm` already installed locally
+You will need to have `node` installed in other to use `npm` which will be needed to install the dependencies needed.
 
 ### Setup
 `Clone the project and cd into the directory`
@@ -31,7 +30,7 @@ To run this project, you will need to have `npm` already installed locally
 run `npm install` to install all the dependencies of the project
 
 ### Usage
-run  `npm run server` to get the project running
+run  `npm run server` to get the project running locally
 
 
 ## Authors
@@ -50,6 +49,3 @@ Contributions, issues and feature requests are welcome!
 
 Give a ⭐️ if you like this project!
 
-## 📝 License
-
-This project is jest licensed.
